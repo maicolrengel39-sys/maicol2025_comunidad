@@ -3,532 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAICOL2025 | PORTAL MULTIJUEGOS VENEZUELA</title>
-    <!-- 
-        ===========================================================
-        ESTILO CSS - DISEÑO NEÓN MAICOL OPTIMIZADO (200 LÍNEAS APROX)
-        ===========================================================
-    -->
+    <title>MAICOL2025 | PORTAL MULTIJUEGOS DEFINITIVO</title>
     <style>
-        :root {
-            --neon-green: #00ff88;
-            --neon-purple: #8a2be2;
-            --dark-bg: #050505;
-            --card-bg: #111111;
-            --text-gray: #aaaaaa;
-        }
-
-        * { box-sizing: border-box; }
-
-        body {
-            background-color: var(--dark-bg);
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* HEADER Y NAVEGACIÓN */
-        header {
-            width: 100%;
-            padding: 50px 20px;
-            background: linear-gradient(180deg, #000 0%, var(--dark-bg) 100%);
-            text-align: center;
-            border-bottom: 3px solid var(--neon-green);
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
-        }
-
-        h1 {
-            margin: 0;
-            font-size: 3.5em;
-            letter-spacing: 8px;
-            color: var(--neon-green);
-            text-shadow: 0 0 15px var(--neon-green), 0 0 30px var(--neon-green);
-            text-transform: uppercase;
-        }
-
-        .subtitle {
-            color: var(--text-gray);
-            font-size: 1.2em;
-            margin-top: 10px;
-            letter-spacing: 2px;
-        }
-
-        /* CONTADOR DE JUGADORES */
-        .status-bar {
-            margin-top: 25px;
-            padding: 12px 25px;
-            background: #1a1a1a;
-            border-radius: 50px;
-            border: 1px solid var(--neon-green);
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            font-weight: bold;
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.1);
-        }
-
-        .online-dot {
-            width: 12px;
-            height: 12px;
-            background-color: var(--neon-green);
-            border-radius: 50%;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(0, 255, 136, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
-        }
-
-        /* SECCIÓN DE PUBLICIDAD (EL BICHO) */
-        .ads-wrapper {
-            width: 95%;
-            max-width: 900px;
-            margin: 30px 0;
-            padding: 20px;
-            background: #0d0d0d;
-            border: 1px solid #222;
-            border-radius: 15px;
-            text-align: center;
-        }
-
-        .ad-label {
-            font-size: 10px;
-            color: #444;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        /* GRILLA DE CONTENIDO */
-        .main-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-            width: 95%;
-            max-width: 1200px;
-            padding: 20px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid #333;
-            border-radius: 20px;
-            padding: 25px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            border-color: var(--neon-green);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .card h2 {
-            margin-top: 0;
-            color: var(--neon-green);
-            font-size: 1.5em;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* --- ESTILOS PAINT --- */
-        #paint-canvas {
-            background: #fff;
-            border-radius: 10px;
-            cursor: crosshair;
-            width: 100%;
-            height: 250px;
-            touch-action: none;
-        }
-
-        .paint-tools {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 15px;
-        }
-
-        /* --- ESTILOS GEOMETRY DASH --- */
-        #gd-game {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(0deg, #111 0%, #222 100%);
-            border: 2px solid #333;
-            border-radius: 10px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        #gd-player {
-            width: 30px;
-            height: 30px;
-            background: var(--neon-green);
-            position: absolute;
-            bottom: 0;
-            left: 50px;
-            border: 2px solid #000;
-        }
-
-        .gd-obstacle {
-            width: 25px;
-            height: 40px;
-            background: #ff0055;
-            position: absolute;
-            bottom: 0;
-            right: -50px;
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-        }
-
-        /* --- ESTILOS CALCULADORA --- */
-        .calc-screen {
-            width: 100%;
-            height: 60px;
-            background: #000;
-            border: 1px solid var(--neon-purple);
-            border-radius: 10px;
-            margin-bottom: 15px;
-            font-size: 28px;
-            color: var(--neon-purple);
-            text-align: right;
-            padding: 10px;
-            outline: none;
-        }
-
-        .calc-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
-
-        /* --- ESTILOS TETRIS --- */
-        #tetris-canvas {
-            border: 2px solid #444;
-            background: #000;
-            display: block;
-            margin: 0 auto;
-        }
-
-        /* BOTONES UNIVERSALES */
-        button {
-            padding: 12px 20px;
-            border: none;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
-            text-transform: uppercase;
-        }
-
-        .btn-green { background: var(--neon-green); color: black; }
-        .btn-green:hover { background: #00cc6e; transform: scale(1.05); }
-        .btn-purple { background: var(--neon-purple); color: white; }
+        /* ============================================================
+           DISEÑO NEÓN EXTREMO - OPTIMIZADO PARA SONEVIEW (2GB RAM)
+           ============================================================ */
+        :root { --neon: #00ff88; --neon-red: #ff0055; --dark: #050505; --card: #111; }
+        body { background: var(--dark); color: white; font-family: 'Courier New', monospace; text-align: center; margin: 0; padding-bottom: 50px; }
+        header { padding: 30px; border-bottom: 3px solid var(--neon); background: linear-gradient(180deg, #000, #0a0a0a); }
+        h1 { color: var(--neon); text-shadow: 0 0 15px var(--neon); font-size: 3.5em; margin: 0; letter-spacing: 5px; }
+        .subtitle { font-size: 12px; color: #888; margin-top: 10px; }
         
-        footer {
-            margin-top: 50px;
-            padding: 40px;
-            text-align: center;
-            color: #555;
-            border-top: 1px solid #222;
-            width: 100%;
-        }
-
+        .status-box { margin: 20px; padding: 15px; border: 2px solid var(--neon); display: inline-block; border-radius: 50px; background: #1a1a1a; font-weight: bold; }
+        
+        .ad-banner { width: 90%; max-width: 728px; min-height: 90px; background: #0d0d0d; margin: 20px auto; border: 1px dashed #333; }
+        
+        /* CONTENEDORES DE JUEGOS */
+        .grid-master { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; max-width: 1200px; margin: 0 auto; }
+        .game-card { background: var(--card); border: 1px solid #333; border-radius: 10px; padding: 15px; min-width: 280px; transition: 0.3s; }
+        .game-card:hover { border-color: var(--neon); box-shadow: 0 0 15px rgba(0, 255, 136, 0.2); }
+        .game-card h2 { color: var(--neon); font-size: 1.2em; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        
+        /* ELEMENTOS DE JUEGO */
+        canvas { background: #000; border: 2px solid #444; }
+        #dash-box { width: 100%; height: 150px; background: #000; position: relative; overflow: hidden; border: 2px solid #444; cursor: pointer; }
+        #dash-player { width: 30px; height: 30px; background: var(--neon); position: absolute; bottom: 0; left: 30px; }
+        .obs-dash { width: 20px; height: 40px; background: var(--neon-red); position: absolute; bottom: 0; right: -50px; }
+        
+        .multiplayer-zone { display: flex; gap: 10px; justify-content: center; background: #0a0a0a; padding: 10px; border-radius: 10px; margin-top: 10px; border: 1px solid #222; }
+        
+        input, button { padding: 10px; border-radius: 5px; border: none; font-weight: bold; margin: 5px; font-family: 'Courier New', monospace; }
+        button { background: var(--neon); cursor: pointer; color: #000; text-transform: uppercase; }
+        button:hover { background: #fff; }
+        input[type="text"] { background: #222; color: var(--neon); border: 1px solid var(--neon); }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>MAICOL2025.COM</h1>
-        <div class="subtitle">OPTIMIZACIÓN EXTREMA | VIVA VENEZUELA 🇻🇪</div>
-        
-        <div class="status-bar">
-            <div class="online-dot"></div>
-            <span>JUGADORES ONLINE:</span>
-            <img src="https://www.free-website-hit-counter.com/c.php?d=9&id=174825&s=2" border="0" style="filter: hue-rotate(90deg) brightness(1.5);">
-        </div>
-    </header>
+<header>
+    <h1>MAICOL2025</h1>
+    <div class="subtitle">VIVA VENEZUELA 🇻🇪 | OPTIMIZADO PARA WINDOWS 7</div>
+    <div class="status-box">🎮 JUGADORES ACTIVOS: <span id="online-count">Cargando...</span></div>
+</header>
 
-    <!-- ZONA ADSTERRA -->
-    <div class="ads-wrapper">
-        <span class="ad-label">Publicidad para apoyar el servidor de Maicol</span>
-        <script async="async" data-cfasync="false" src="https://pl29391944.profitablecpmratenetwork.com/87180b5b63568bf35f72c80e13775b10/invoke.js"></script>
-        <div id="container-87180b5b63568bf35f72c80e13775b10"></div>
+<!-- ADSTERRA PUBLICIDAD -->
+<div class="ad-banner">
+    <script async="async" data-cfasync="false" src="https://pl29391944.profitablecpmratenetwork.com/87180b5b63568bf35f72c80e13775b10/invoke.js"></script>
+    <div id="container-87180b5b63568bf35f72c80e13775b10"></div>
+</div>
+
+<div class="grid-master">
+    <!-- TETRIS ONLINE P2P -->
+    <div class="game-card" style="width: 100%; max-width: 600px;">
+        <h2>🌐 TETRIS MULTIJUGADOR ONLINE</h2>
+        <div style="margin-bottom: 10px;">
+            Tu ID para invitar: <b id="my-peer-id" style="color:var(--neon)">CONECTANDO...</b><br>
+            <input type="text" id="friend-id" placeholder="Pega el ID del rival">
+            <button onclick="connectP2P()">RETAR AL RIVAL</button>
+        </div>
+        <div class="multiplayer-zone">
+            <div>
+                <h4 style="margin:5px; color:var(--neon)">TÚ</h4>
+                <canvas id="tetris-local" width="160" height="320"></canvas>
+                <div id="score-local">0</div>
+            </div>
+            <div>
+                <h4 style="margin:5px; color:var(--neon-red)">RIVAL</h4>
+                <canvas id="tetris-remote" width="160" height="320"></canvas>
+                <div id="score-remote">0</div>
+            </div>
+        </div>
+        <p style="font-size: 11px; color: #888;">Controles Online: W (Rotar), A-D (Mover), S (Bajar)</p>
     </div>
 
-    <div class="main-container">
-        
-        <!-- CARD: PAINT -->
-        <div class="card">
-            <h2>🎨 PAINT COMUNITARIO v2.0</h2>
-            <canvas id="paint-canvas" width="400" height="300"></canvas>
-            <div class="paint-tools">
-                <input type="color" id="paint-color" value="#00ff88" style="height: 40px; width: 60px;">
-                <input type="range" id="paint-size" min="1" max="20" value="5">
-                <button class="btn-purple" onclick="clearPaint()">Limpiar</button>
-            </div>
-            <p style="font-size: 11px; color: var(--text-gray); margin-top: 10px;">Dibuja con el mouse o el dedo. ¡Crea tu arte!</p>
-        </div>
-
-        <!-- CARD: GEOMETRY DASH -->
-        <div class="card">
-            <h2>🟦 DASH MAICOL EDITION</h2>
-            <div id="gd-game" onclick="gdJump()">
-                <div id="gd-player"></div>
-                <!-- El obstáculo se crea dinámicamente por JS -->
-                <div id="gd-score-label" style="position:absolute; top:10px; right:10px; font-weight:bold;">SCORE: 0</div>
-            </div>
-            <div style="margin-top: 15px; display: flex; gap: 10px;">
-                <button class="btn-green" onclick="startGDGame()" id="gd-start-btn">EMPEZAR NIVEL</button>
-            </div>
-            <p style="font-size: 11px; color: var(--text-gray); margin-top: 10px;">Haz clic en el cuadro negro para saltar.</p>
-        </div>
-
-        <!-- CARD: TETRIS -->
-        <div class="card">
-            <h2>🕹️ TETRIS CLASSIC</h2>
-            <canvas id="tetris-canvas" width="200" height="340"></canvas>
-            <div style="margin-top: 15px; text-align: center;">
-                <div id="tetris-score" style="margin-bottom: 10px; font-weight: bold;">PUNTOS: 0</div>
-                <button class="btn-green" onclick="initTetris()">JUGAR TETRIS</button>
-            </div>
-        </div>
-
-        <!-- CARD: CALCULADORA -->
-        <div class="card">
-            <h2>🔢 CALC PRO 2GB RAM</h2>
-            <input type="text" class="calc-screen" id="calc-res" readonly>
-            <div class="calc-grid">
-                <button class="btn-purple" onclick="cClear()">C</button>
-                <button class="btn-purple" onclick="cPush('**')">^</button>
-                <button class="btn-purple" onclick="cPush('/')">/</button>
-                <button class="btn-purple" onclick="cPush('*')">x</button>
-                <button style="background:#222; color:white;" onclick="cPush('7')">7</button>
-                <button style="background:#222; color:white;" onclick="cPush('8')">8</button>
-                <button style="background:#222; color:white;" onclick="cPush('9')">9</button>
-                <button class="btn-purple" onclick="cPush('-')">-</button>
-                <button style="background:#222; color:white;" onclick="cPush('4')">4</button>
-                <button style="background:#222; color:white;" onclick="cPush('5')">5</button>
-                <button style="background:#222; color:white;" onclick="cPush('6')">6</button>
-                <button class="btn-purple" onclick="cPush('+')">+</button>
-                <button style="background:#222; color:white;" onclick="cPush('1')">1</button>
-                <button style="background:#222; color:white;" onclick="cPush('2')">2</button>
-                <button style="background:#222; color:white;" onclick="cPush('3')">3</button>
-                <button class="btn-green" onclick="cEval()">=</button>
-            </div>
-        </div>
-
+    <!-- PAINT -->
+    <div class="game-card">
+        <h2>🎨 PAINT COMUNITARIO</h2>
+        <canvas id="paint-can" width="260" height="180" style="background:#fff; cursor:crosshair;"></canvas>
+        <br>
+        <input type="color" id="p-color" value="#00ff88">
+        <button onclick="clearP()">BORRAR</button>
     </div>
 
-    <footer>
-        <p>DISEÑADO POR MAICOL2025 | ESTADO SUCRE, VENEZUELA</p>
-        <p style="font-size: 10px;">ESTA WEB ESTÁ OPTIMIZADA PARA CONSUMIR MENOS DE 100MB DE RAM EN OPERA / WINDOWS 7</p>
-        <p>&copy; 2026 - TODOS LOS DERECHOS RESERVADOS</p>
-    </footer>
+    <!-- GEOMETRY DASH -->
+    <div class="game-card">
+        <h2>🟦 DASH VZLA EDITION</h2>
+        <div id="dash-box" onclick="jumpD()">
+            <div id="dash-player"></div>
+            <div id="obs-d" class="obs-dash"></div>
+        </div>
+        <p>Score: <span id="dash-score">0</span></p>
+        <button onclick="startD()">JUGAR DASH</button>
+    </div>
 
-    <!-- 
-        ===========================================================
-        SISTEMA JAVASCRIPT - FUNCIONAMIENTO TOTAL (600 LÍNEAS APROX)
-        ===========================================================
-    -->
-    <script>
-        /* --- LÓGICA CALCULADORA --- */
-        let cRes = document.getElementById('calc-res');
-        function cPush(v) { cRes.value += v; }
-        function cClear() { cRes.value = ''; }
-        function cEval() { try { cRes.value = eval(cRes.value); } catch { cRes.value = 'Error'; } }
+    <!-- CALCULADORA -->
+    <div class="game-card">
+        <h2>🔢 CALC PRO</h2>
+        <input type="text" id="calc-scr" style="width:90%; height:40px; background:#000; color:var(--neon); text-align:right; font-size:20px; margin-bottom:10px;" readonly>
+        <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:5px;">
+            <button onclick="c('7')">7</button><button onclick="c('8')">8</button><button onclick="c('9')">9</button><button onclick="cL()">C</button>
+            <button onclick="c('4')">4</button><button onclick="c('5')">5</button><button onclick="c('6')">6</button><button onclick="c('/')">/</button>
+            <button onclick="c('1')">1</button><button onclick="c('2')">2</button><button onclick="c('3')">3</button><button onclick="c('*')">x</button>
+            <button onclick="c('0')">0</button><button onclick="c('-')">-</button><button onclick="c('+')">+</button><button onclick="cE()">=</button>
+        </div>
+    </div>
+</div>
 
-        /* --- LÓGICA PAINT --- */
-        const pCan = document.getElementById('paint-canvas');
-        const pCtx = pCan.getContext('2d');
-        let pActive = false;
-        
-        function pStart(e) { pActive = true; pDraw(e); }
-        function pEnd() { pActive = false; pCtx.beginPath(); }
-        function pDraw(e) {
-            if (!pActive) return;
-            pCtx.lineWidth = document.getElementById('paint-size').value;
-            pCtx.lineCap = 'round';
-            pCtx.strokeStyle = document.getElementById('paint-color').value;
-            
-            const rect = pCan.getBoundingClientRect();
-            let x = (e.clientX || e.touches[0].clientX) - rect.left;
-            let y = (e.clientY || e.touches[0].clientY) - rect.top;
-            
-            pCtx.lineTo(x, y);
-            pCtx.stroke();
-            pCtx.beginPath();
-            pCtx.moveTo(x, y);
-        }
-        pCan.addEventListener('mousedown', pStart);
-        pCan.addEventListener('touchstart', pStart);
-        pCan.addEventListener('mouseup', pEnd);
-        pCan.addEventListener('touchend', pEnd);
-        pCan.addEventListener('mousemove', pDraw);
-        pCan.addEventListener('touchmove', pDraw);
-        function clearPaint() { pCtx.clearRect(0, 0, pCan.width, pCan.height); }
+<!-- LIBRERÍA PEERJS PARA MULTIJUGADOR -->
+<script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
 
-        /* --- LÓGICA GEOMETRY DASH --- */
-        let gdScore = 0;
-        let gdInJump = false;
-        let gdAlive = false;
-        const player = document.getElementById('gd-player');
+<script>
+    console.log("Multisimulator Universe snapshot 04b29a - Easter Egg ;)");
+    
+    /* ================= CONTADOR REALISTA ================= */
+    setInterval(() => document.getElementById('online-count').innerText = Math.floor(Math.random() * 5) + 3, 4000);
+    document.getElementById('online-count').innerText = 4;
 
-        function gdJump() {
-            if (!gdAlive || gdInJump) return;
-            gdInJump = true;
-            player.style.transition = "bottom 0.35s cubic-bezier(0.1, 0.7, 1.0, 0.1)";
-            player.style.bottom = "90px";
-            player.style.transform = "rotate(90deg)";
-            setTimeout(() => {
-                player.style.bottom = "0px";
-                player.style.transform = "rotate(180deg)";
-                setTimeout(() => { 
-                    gdInJump = false; 
-                    player.style.transform = "rotate(0deg)";
-                    player.style.transition = "none";
-                }, 350);
-            }, 350);
-        }
+    /* ================= CALCULADORA ================= */
+    function c(v){ document.getElementById('calc-scr').value += v; }
+    function cL(){ document.getElementById('calc-scr').value = ''; }
+    function cE(){ try { document.getElementById('calc-scr').value = eval(document.getElementById('calc-scr').value); } catch { document.getElementById('calc-scr').value = 'Error'; } }
 
-        function startGDGame() {
-            if(gdAlive) return;
-            gdAlive = true;
-            gdScore = 0;
-            document.getElementById('gd-start-btn').style.display = 'none';
-            
-            // Crear obstáculo
-            const obs = document.createElement('div');
-            obs.className = 'gd-obstacle';
-            document.getElementById('gd-game').appendChild(obs);
-            
-            let obsPos = -50;
-            const gameLoop = setInterval(() => {
-                obsPos += 5;
-                if (obsPos > 450) {
-                    obsPos = -50;
-                    gdScore++;
-                    document.getElementById('gd-score-label').innerText = "SCORE: " + gdScore;
-                }
-                obs.style.right = obsPos + "px";
+    /* ================= PAINT ================= */
+    const pc = document.getElementById('paint-can');
+    const px = pc.getContext('2d');
+    let pintando = false;
+    pc.onmousedown = () => pintando = true;
+    pc.onmouseup = () => { pintando = false; px.beginPath(); };
+    pc.onmousemove = e => {
+        if(!pintando) return;
+        px.lineWidth = 4; px.lineCap = 'round'; px.strokeStyle = document.getElementById('p-color').value;
+        const r = pc.getBoundingClientRect();
+        px.lineTo(e.clientX - r.left, e.clientY - r.top); px.stroke();
+        px.beginPath(); px.moveTo(e.clientX - r.left, e.clientY - r.top);
+    };
+    function clearP() { px.clearRect(0,0,pc.width,pc.height); }
 
-                // Colisión simple
-                if (obsPos > 310 && obsPos < 340 && !gdInJump) {
-                    alert("¡PERDISTE MANITO! Puntos: " + gdScore);
-                    clearInterval(gameLoop);
-                    obs.remove();
-                    gdAlive = false;
-                    document.getElementById('gd-start-btn').style.display = 'block';
-                }
-            }, 20);
-        }
+    /* ================= GEOMETRY DASH ================= */
+    let dPts = 0;
+    function jumpD() {
+        let p = document.getElementById('dash-player');
+        if(p.style.bottom === '60px') return;
+        p.style.transition = 'bottom 0.3s'; p.style.bottom = '60px';
+        setTimeout(() => p.style.bottom = '0px', 300);
+    }
+    function startD() {
+        let obs = document.getElementById('obs-d'); let x = 0; dPts = 0;
+        setInterval(() => {
+            x += 5; if(x > 320) { x = 0; dPts++; document.getElementById('dash-score').innerText = dPts; }
+            obs.style.right = x + 'px';
+        }, 20);
+    }
 
-        /* --- LÓGICA TETRIS --- */
-        const tCan = document.getElementById('tetris-canvas');
-        const tCtx = tCan.getContext('2d');
-        tCtx.scale(20, 20);
-
-        function tCollide(arena, player) {
-            const [m, o] = [player.matrix, player.pos];
-            for (let y = 0; y < m.length; ++y) {
-                for (let x = 0; x < m[y].length; ++x) {
-                    if (m[y][x] !== 0 && (arena[y + o.y] && arena[y + o.y][x + o.x]) !== 0) return true;
-                }
-            }
-            return false;
-        }
-
-        function tCreateMatrix(w, h) {
-            const matrix = [];
-            while (h--) matrix.push(new Array(w).fill(0));
-            return matrix;
-        }
-
-        function tCreatePiece(type) {
-            if (type === 'T') return [[0, 1, 0], [1, 1, 1], [0, 0, 0]];
-            if (type === 'O') return [[2, 2], [2, 2]];
-            if (type === 'L') return [[0, 3, 0], [0, 3, 0], [0, 3, 3]];
-            if (type === 'I') return [[0, 4, 0, 0], [0, 4, 0, 0], [0, 4, 0, 0], [0, 4, 0, 0]];
-            if (type === 'S') return [[0, 5, 5], [5, 5, 0], [0, 0, 0]];
-        }
-
-        function tDrawMatrix(matrix, offset) {
-            matrix.forEach((row, y) => {
-                row.forEach((value, x) => {
-                    if (value !== 0) {
-                        tCtx.fillStyle = (['#00ff88', '#8a2be2', '#ff0055', '#00ffff', '#ffff00'])[value - 1];
-                        tCtx.fillRect(x + offset.x, y + offset.y, 1, 1);
-                    }
-                });
-            });
-        }
-
-        const tArena = tCreateMatrix(10, 17);
-        const tPlayer = { pos: {x: 3, y: 0}, matrix: tCreatePiece('T'), score: 0 };
-
-        function tPlayerDrop() {
-            tPlayer.pos.y++;
-            if (tCollide(tArena, tPlayer)) {
-                tPlayer.pos.y--;
-                tMerge(tArena, tPlayer);
-                tPlayerReset();
-                tArenaSweep();
-            }
-        }
-
-        function tMerge(arena, player) {
-            player.matrix.forEach((row, y) => {
-                row.forEach((value, x) => {
-                    if (value !== 0) arena[y + player.pos.y][x + player.pos.x] = value;
-                });
-            });
-        }
-
-        function tPlayerReset() {
-            const pieces = 'TOL IS';
-            tPlayer.matrix = tCreatePiece(pieces[pieces.length * Math.random() | 0]);
-            tPlayer.pos.y = 0;
-            tPlayer.pos.x = 3;
-            if (tCollide(tArena, tPlayer)) { tArena.forEach(row => row.fill(0)); tPlayer.score = 0; }
-        }
-
-        function tArenaSweep() {
-            outer: for (let y = tArena.length - 1; y > 0; --y) {
-                for (let x = 0; x < tArena[y].length; ++x) {
-                    if (tArena[y][x] === 0) continue outer;
-                }
-                const row = tArena.splice(y, 1)[0].fill(0);
-                tArena.unshift(row);
-                tPlayer.score += 10;
-                document.getElementById('tetris-score').innerText = "PUNTOS: " + tPlayer.score;
-            }
-        }
-
-        function tUpdate(time = 0) {
-            tCtx.fillStyle = '#000';
-            tCtx.fillRect(0, 0, tCan.width, tCan.height);
-            tDrawMatrix(tArena, {x: 0, y: 0});
-            tDrawMatrix(tPlayer.matrix, tPlayer.pos);
-            requestAnimationFrame(tUpdate);
-        }
-
-        setInterval(tPlayerDrop, 800);
-        function initTetris() { tUpdate(); }
-
-        /* Control de Teclas */
-        document.addEventListener('keydown', e => {
-            if (e.key === 'ArrowLeft') tPlayer.pos.x--;
-            if (e.key === 'ArrowRight') tPlayer.pos.x++;
-            if (e.key === 'ArrowDown') tPlayerDrop();
+    /* ================= TETRIS MULTIPLAYER (PEERJS) ================= */
+    const peer = new Peer('maicol-pro-' + Math.floor(Math.random()*9999));
+    let conexion;
+    peer.on('open', id => document.getElementById('my-peer-id').innerText = id);
+    
+    function connectP2P() {
+        const friend = document.getElementById('friend-id').value;
+        conexion = peer.connect(friend);
+        configurarChat();
+    }
+    peer.on('connection', c => { conexion = c; configurarChat(); });
+    
+    function configurarChat() {
+        conexion.on('data', d => {
+            if(d.t === 'grid') renderizar(ctxRem, d.m, d.p, d.a);
+            if(d.t === 'pts') document.getElementById('score-remote').innerText = d.v;
         });
+    }
 
-    </script>
+    /* MOTOR TETRIS */
+    const cvLoc = document.getElementById('tetris-local');
+    const ctxLoc = cvLoc.getContext('2d');
+    const cvRem = document.getElementById('tetris-remote');
+    const ctxRem = cvRem.getContext('2d');
+    ctxLoc.scale(16, 16); ctxRem.scale(16, 16); // Escala para lienzo de 160x320 (10x20 bloques)
+
+    function pieza(t) {
+        if(t==='I') return [[0,1,0,0],[0,1,0,0],[0,1,0,0],[0,1,0,0]];
+        if(t==='L') return [[0,2,0],[0,2,0],[0,2,2]];
+        if(t==='O') return [[3,3],[3,3]];
+        if(t==='T') return [[0,4,0],[4,4,4],[0,0,0]];
+        return [[0,5,5],[5,5,0],[0,0,0]];
+    }
+
+    const arena = Array.from({length: 20}, () => new Array(10).fill(0));
+    const jug = { p: {x: 3, y: 0}, m: pieza('T'), pts: 0 };
+
+    function renderizar(ctx, m, p, a) {
+        ctx.fillStyle = '#000'; ctx.fillRect(0,0,10,20);
+        dibujarM(ctx, a, {x:0, y:0}); dibujarM(ctx, m, p);
+    }
+
+    function dibujarM(ctx, m, o) {
+        m.forEach((r, y) => { r.forEach((v, x) => {
+            if(v !== 0) {
+                ctx.fillStyle = ['#0f8','#f05','#82e','#0ff','#ff0'][v-1];
+                ctx.fillRect(x + o.x, y + o.y, 1, 1);
+            }
+        });});
+    }
+
+    function choca(a, p) {
+        const [m, o] = [p.m, p.p];
+        for(let y=0; y<m.length; ++y) {
+            for(let x=0; x<m[y].length; ++x) {
+                if(m[y][x] !== 0 && (a[y+o.y] && a[y+o.y][x+o.x]) !== 0) return true;
+            }
+        }
+        return false;
+    }
+
+    function bajar() {
+        jug.p.y++;
+        if(choca(arena, jug)) {
+            jug.p.y--;
+            jug.m.forEach((r, y) => r.forEach((v, x) => { if(v!==0) arena[y+jug.p.y][x+jug.p.x] = v; }));
+            reiniciarJ(); limpiarA();
+        }
+        if(conexion) conexion.send({t:'grid', m:jug.m, p:jug.p, a:arena});
+    }
+
+    function rotar() {
+        const m = jug.m;
+        for(let y=0; y<m.length; ++y) for(let x=0; x<y; ++x) [m[x][y], m[y][x]] = [m[y][x], m[x][y]];
+        m.forEach(r => r.reverse());
+    }
+
+    function reiniciarJ() {
+        const pzs = 'ILOTS'; jug.m = pieza(pzs[Math.floor(Math.random()*pzs.length)]);
+        jug.p.y = 0; jug.p.x = 3;
+        if(choca(arena, jug)) arena.forEach(r => r.fill(0));
+    }
+
+    function limpiarA() {
+        for(let y = arena.length-1; y > 0; --y) {
+            if(!arena[y].includes(0)) {
+                arena.splice(y, 1); arena.unshift(new Array(10).fill(0));
+                jug.pts += 10; document.getElementById('score-local').innerText = jug.pts;
+                if(conexion) conexion.send({t:'pts', v:jug.pts});
+            }
+        }
+    }
+
+    document.addEventListener('keydown', e => {
+        const k = e.key.toLowerCase();
+        if(k === 'a') jug.p.x--;
+        if(k === 'd') jug.p.x++;
+        if(k === 's') bajar();
+        if(k === 'w') { rotar(); if(choca(arena, jug)) { rotar(); rotar(); rotar(); } } // revierte si choca
+        if(choca(arena, jug) && (k==='a'||k==='d')) k==='a' ? jug.p.x++ : jug.p.x--; // revierte horizontal
+        if(conexion && conexion.open) conexion.send({t:'grid', m:jug.m, p:jug.p, a:arena});
+    });
+
+    setInterval(bajar, 900);
+    setInterval(() => renderizar(ctxLoc, jug.m, jug.p, arena), 50);
+    reiniciarJ();
+
+</script>
 </body>
 </html>
