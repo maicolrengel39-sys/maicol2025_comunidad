@@ -1,14 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAICOL2025 | MULTI-GAME PORTAL .COM</title>
+    <title>MAICOL2025 | MULTI-GAME PORTAL</title>
     <style>
-        /* =========================================
-           SISTEMA DE ESTILOS (CSS) - MAICOL DARK MODE
-           ========================================= */
         :root {
             --neon: #00ff88;
             --dark: #050505;
@@ -36,29 +32,30 @@
 
         h1 { margin: 0; font-size: 3em; letter-spacing: 5px; color: var(--neon); text-shadow: 0 0 15px var(--neon); }
 
-        /* Grilla de Anuncios en el Inicio */
+        /* Estilo del Contador de Jugadores */
+        .player-counter {
+            background: #222;
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid var(--neon);
+            margin-top: 15px;
+            display: inline-block;
+            font-weight: bold;
+            color: var(--neon);
+        }
+
+        /* Contenedor del Anuncio Real */
         .ads-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
             width: 90%;
             max-width: 800px;
             margin: 20px 0;
+            padding: 15px;
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 10px;
+            text-align: center;
         }
 
-        .ad-slot {
-            height: 100px;
-            background: #1a1a1a;
-            border: 1px dashed #444;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            color: #555;
-            border-radius: 5px;
-        }
-
-        /* Contenedor de Juegos */
         .main-hub {
             display: flex;
             flex-wrap: wrap;
@@ -74,13 +71,13 @@
             border-radius: 15px;
             padding: 20px;
             width: 350px;
-            transition: 0.3s;
             text-align: center;
+            transition: 0.3s;
         }
 
         .game-card:hover { border-color: var(--neon); transform: scale(1.02); }
 
-        /* ESTILOS CALCULADORA */
+        /* Estilos Calculadora */
         #calc-display {
             width: 100%;
             height: 50px;
@@ -98,7 +95,7 @@
         .calc-btn { padding: 15px; background: #222; border: none; color: white; cursor: pointer; border-radius: 5px; }
         .calc-btn:hover { background: var(--accent); }
 
-        /* ESTILOS TETRIS */
+        /* Estilos Tetris */
         canvas#tetris {
             border: 2px solid white;
             background-color: #000;
@@ -125,43 +122,38 @@
     <header>
         <h1>MAICOL2025.COM</h1>
         <p>EL REY DE LA OPTIMIZACIÓN EN VENEZUELA</p>
+        
+        <div class="player-counter">
+            🎮 JUGADORES ACTIVOS: 
+            <img src="https://www.free-website-hit-counter.com/c.php?d=9&id=174825&s=2" border="0" alt="Counter" style="vertical-align: middle; filter: hue-rotate(90deg);">
+        </div>
     </header>
 
-    <!-- LOS 9 ANUNCIOS PEQUEÑOS (SIMULADOS) -->
+    <!-- ESTO ES ADSTERRA REAL (EL BICHO) -->
     <div class="ads-container">
-        <div class="ad-slot">ANUNCIO 1 (ADSENSE)</div>
-        <div class="ad-slot">ANUNCIO 2 (ADSENSE)</div>
-        <div class="ad-slot">ANUNCIO 3 (ADSENSE)</div>
-        <div class="ad-slot">ANUNCIO 4 (ADSENSE)</div>
-        <div class="ad-slot">ANUNCIO 5 (ADSENSE)</div>
-        <div class="ad-slot">ANUNCIO 6 (ADSENSE)</div>
-        <div class="ad-slot">ANUNCIO 7 (ADSENSE)</div>
-        <div class="ad-slot">ANUNCIO 8 (ADSENSE)</div>
-        <div class="ad-slot">ANUNCIO 9 (ADSENSE)</div>
+        <p style="font-size: 10px; color: #555; margin-bottom: 10px;">PUBLICIDAD PARA APOYAR AL CANAL</p>
+        <script async="async" data-cfasync="false" src="https://pl29391944.profitablecpmratenetwork.com/87180b5b63568bf35f72c80e13775b10/invoke.js"></script>
+        <div id="container-87180b5b63568bf35f72c80e13775b10"></div>
     </div>
 
     <div class="main-hub">
-
-        <!-- JUEGO 1: CALCULADORA PRO -->
+        <!-- CALCULADORA -->
         <div class="game-card">
-            <h2>?? CALCULADORA MAICOL</h2>
+            <h2>🔢 CALCULADORA MAICOL</h2>
             <input type="text" id="calc-display" disabled>
             <div class="calc-buttons">
                 <button class="calc-btn" onclick="calcClear()">C</button>
                 <button class="calc-btn" onclick="calcAdd('**')">^</button>
                 <button class="calc-btn" onclick="calcAdd('/')">/</button>
                 <button class="calc-btn" onclick="calcAdd('*')">x</button>
-                
                 <button class="calc-btn" onclick="calcAdd('7')">7</button>
                 <button class="calc-btn" onclick="calcAdd('8')">8</button>
                 <button class="calc-btn" onclick="calcAdd('9')">9</button>
                 <button class="calc-btn" onclick="calcAdd('-')">-</button>
-                
                 <button class="calc-btn" onclick="calcAdd('4')">4</button>
                 <button class="calc-btn" onclick="calcAdd('5')">5</button>
                 <button class="calc-btn" onclick="calcAdd('6')">6</button>
                 <button class="calc-btn" onclick="calcAdd('+')">+</button>
-                
                 <button class="calc-btn" onclick="calcAdd('1')">1</button>
                 <button class="calc-btn" onclick="calcAdd('2')">2</button>
                 <button class="calc-btn" onclick="calcAdd('3')">3</button>
@@ -169,15 +161,13 @@
             </div>
         </div>
 
-        <!-- JUEGO 2: TETRIS RETRO -->
+        <!-- TETRIS -->
         <div class="game-card">
-            <h2>?? TETRIS MAICOL EDITION</h2>
+            <h2>🕹️ TETRIS MAICOL EDITION</h2>
             <canvas id="tetris" width="240" height="400"></canvas>
             <p id="tetris-score">Puntos: 0</p>
             <button class="btn-play" onclick="startTetris()">INICIAR TETRIS</button>
-            <div style="font-size: 10px; color: #888; margin-top: 5px;">Usa Flechas o A-S-D</div>
         </div>
-
     </div>
 
     <footer>
@@ -185,9 +175,7 @@
     </footer>
 
     <script>
-        /* =========================================
-           LÓGICA DE LA CALCULADORA
-           ========================================= */
+        // LÓGICA CALCULADORA
         let display = document.getElementById('calc-display');
         function calcAdd(val) { display.value += val; }
         function calcClear() { display.value = ''; }
@@ -196,9 +184,7 @@
             catch { display.value = 'Error'; }
         }
 
-        /* =========================================
-           LÓGICA DEL TETRIS (SÚPER LARGA)
-           ========================================= */
+        // LÓGICA TETRIS
         const canvas = document.getElementById('tetris');
         const context = canvas.getContext('2d');
         context.scale(20, 20);
